@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My ChatBot</title>
+    <style>
+        body{
+            text-align: center;
+            margin: 40% 40% 40% 40%;
+            background-color: rgb(120, 120, 143);
+        }
+        .container{
+            text-align: center;
+            margin: auto;
+        }
+        #chatLog{
+            font-family: fantasy;
+            text-align: justify;
+            margin-left: 20% 5%;
+        }
+        #userBox{
+            border-color: red;
+            border-radius: 15px;
+        }
+        #userBox::selection{
+            color: rgb(120, 120, 143);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <p id="chatLog">- - CHAT AREA- -<br></p>
+        <input id="userBox" type="text" onkeydown="if (event.keyCode == 13) {talk()}">
+    </div>
+</body>
+<script>
+    know = {
+    "hello" : "hi",
+    "how are you" : "good",
+    "Did you go to church" : "yes",
+    "ok" : ":)"
+};
+function talk() {
+    var user = document.getElementById("userBox").value;
+    document.getElementById("userBox").value = "";
+    document.getElementById("chatLog").innerHTML += user+"<br>";
+    if (user in know) {
+        document.getElementById("chatLog").innerHTML += know[user]+"<br>";
+    } else {
+        document.getElementById("chatLog").innerHTML += "I don't understand...<br>";
+    }
+} 
+</script>
+</html>
